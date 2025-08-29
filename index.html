@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Kenth Marlowe Jabanes - Portfolio</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#page-top">KMJ</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#hobbies">Hobbies</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <h1 class="mx-auto my-0 text-uppercase">Kenth Marlowe Jabanes</h1>
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5">STUDENT</h2>
+                        <a class="btn btn-primary" href="#about">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- About-->
+        <section class="about-section text-center" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mb-4">Hi!</h2>
+                        <p class="text-white-50">
+                            Welcome to my portfolio website. I'm currently a third-year BSIT student with a passion for technology and continuous learning. I’m studying various topics and looking forward to applying my knowledge in real-world scenarios.
+                        </p>
+                    </div>
+                </div>
+                <img class="img-fluid" src="..\assets\img\1000029062.png" alt="..." />
+            </div>
+        </section>
+        <!--Certificate-->
+        <section id="certificate" class="container my-5 fade-in">
+            <h2>Certificates:</h2>
+            <div class="polaroid-gallery">
+                <div class="polaroid">
+                    <img src="..\assets\img\1.jpg" alt="Certificate 1" onclick="openLightbox(this)">
+                    <div class="caption">Certificate of Achievement 1</div>
+                </div>
+                <div class="polaroid">
+                    <img src="..\assets\img\2.jpg" alt="Certificate 2" onclick="openLightbox(this)">
+                    <div class="caption">Certificate of Achievement 2</div>
+                </div>
+                <div class="polaroid">
+                    <img src="..\assets\img\3.jpg" alt="Certificate 3" onclick="openLightbox(this)">
+                    <div class="caption">Certificate of Achievement 3</div>
+                </div>
+            </div>
+        </section>
+        
+        <div id="lightbox" class="lightbox">
+            <span class="close">&times;</span>
+            <img class="lightbox-content" id="lightbox-img">
+            <button class="prev-btn"><</button>
+            <button class="next-btn">></button>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let currentImageIndex = 0;
+                const images = Array.from(document.querySelectorAll('.polaroid img'));
+                
+                function openLightbox(image) {
+                    const lightbox = document.getElementById('lightbox');
+                    const lightboxImg = document.getElementById('lightbox-img');
+                    currentImageIndex = images.indexOf(image); 
+                    lightboxImg.src = image.src;
+                    lightbox.style.display = 'block';
+                }
+        
+                function closeLightbox() {
+                    const lightbox = document.getElementById('lightbox');
+                    lightbox.style.display = 'none';
+                }
+        
+                function showNextImage() {
+                    currentImageIndex = (currentImageIndex + 1) % images.length; 
+                    const lightboxImg = document.getElementById('lightbox-img');
+                    const nextImage = new Image();
+                    nextImage.src = images[currentImageIndex].src;
+                    nextImage.onload = function(){
+                        lightboxImg.src = nextImage.src;
+                }
+            }
+        
+            function showPreviousImage() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length; 
+                const lightboxImg = document.getElementById('lightbox-img');
+                lightboxImg.src = images[currentImageIndex].src;
+            }
+        
+                document.querySelector('.close').addEventListener('click', closeLightbox);
+                document.querySelector('.next-btn').addEventListener('click', showNextImage);
+                document.querySelector('.prev-btn').addEventListener('click', showPreviousImage);
+        
+                document.getElementById('lightbox').addEventListener('click', function(event) {
+                    if (event.target === this) {
+                        closeLightbox();
+                    }
+                });
+        
+                document.querySelectorAll('.polaroid img').forEach(img => {
+                    img.addEventListener('click', () => openLightbox(img));
+                });
+            });
+        </script>
+        
+        <!--Hobbies-->
+    <!--section class="hobbies-section text-center" id="hobbies">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-gray mb-4"> My Hobbies</h2>
+                    <p class="text-gray-50">
+                        In my free time, I enjoy reading manhwa and manga, watching movies, and listening to music. These hobbies allow me to relax, be creative, and stay inspired!
+                    </p>
+                </div>
+        </div>
+    </div>
+    </section-->
+    <section id="hobbies" class="container my-5 fade-in">
+        <h2>Hobbies 📚🎧☕:</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Reading Manhwa and Manga 📖</h5>
+                        <p class="card-text">I enjoy exploring different manhwa and manga series. It’s a great way to relax and dive into fascinating stories and artwork.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Watching Movies 🎬</h5>
+                        <p class="card-text">I love watching movies from various genres. It’s an excellent way to unwind and get inspired by creative storytelling and cinematography.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Listening to Musics 🎧ྀི</h5>
+                        <p class="card-text">Music is a big part of my life. I listen to a variety of genres to suit my mood and enhance my productivity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Projects>
+        <section class="projects-section bg-light" id="projects">
+            <div class="container px-4 px-lg-5">
+                <!-- Featured Project Row>
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="Screenshot 2024-10-14 134842.png" alt="..." /></div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="featured-text text-center text-lg-left">
+                            <h4>GamingVault Haven</h4>
+                            <p class="text-black-50 mb-0">GamingVault Haven is an eCommerce project created for the subject LIE, built using the Wix platform to provide a seamless shopping experience for gamers.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project One Row>
+                <div class="row gx-0 justify-content-center">
+                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-02.jpg" alt="..." /></div>
+                    <div class="col-lg-6 order-lg-first">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-right">
+                                    <h4 class="text-white">CCIS Cafeteria</h4>
+                                    <p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <Signup-->
+        <section class="projects-section bg-light" id="projects">
+            <h2>Projects 👨🏻‍💻:</h2>
+            <div class="container px-4 px-lg-5">
+                <!-- Featured Project Row-->
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="..\assets\img\Screenshot 2024-10-14 134842.png" alt="..." /></div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="featured-text text-center text-lg-left">
+                            <h4>GamingVault Haven</h4>
+                            <p class="text-black-50 mb-0">GamingVault Haven is an eCommerce project created for the subject LIE, built using the Wix platform to provide a seamless shopping experience for gamers.</p>
+                            <a href="https://kenthmarlowejabane.wixsite.com/my-site?fbclid=IwY2xjawF6kGFleHRuA2FlbQIxMAABHYW3whcpKen3XExnS9hRabg7T8BKOqZ4bQ2cXK-cqQBYsQ8m59EP_bWHAg_aem_LVgWz1yHxZ6i1xcG_kmS0g" target="_blank">Visit</a>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Project One Row-->
+                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+                    <div class="col-lg-6"><img class="img-fluid" src="..\assets\img\logo-no-background.png" alt="..." /></div>
+                    <div class="col-lg-6">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-left">
+                                    <h4 class="text-white">CCIS Cafeteria</h4>
+                                    <p class="mb-0 text-white-50">The CCIS Cafeteria Ordering System (C.O.C.) aims to streamline the food ordering process for students and faculty by providing a user-friendly interface for browsing the menu, placing orders, and tracking order statuses, ultimately improving the efficiency and experience within the cafeteria.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Two Row-->
+                <div class="row gx-0 justify-content-center">
+                    <div class="col-lg-6"><img class="img-fluid" src="..\assets\img\NIMBUS_FINAL.png" alt="..." /></div>
+                    <div class="col-lg-6 order-lg-first">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-right">
+                                    <h4 class="text-white">Nimbus</h4>
+                                    <p class="mb-0 text-white-50">Nimbus is a creative digital poster designed using Canva for the LIE subject, aimed at visually representing key concepts in an engaging and modern format.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="signup-section" id="signup">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-10 col-lg-8 mx-auto text-center">
+                        <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+                        <h2 class="text-white mb-5">Let's Get in Touch Send me a Message:</h2>
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        <form class="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <!-- Email address input-->
+                            <div class="row input-group-newsletter">
+                                <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
+                                <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">Notify Me!</button></div>
+                            </div>
+                            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">An email is required.</div>
+                            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">Email is not valid.</div>
+                            <!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3 mt-2 text-white">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    To activate this form, sign up at
+                                    <br />
+                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error sending message!</div></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact-->
+        <section class="contact-section bg-black">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Address</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">Butuan City, Philippines</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Email</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50"><a href="#!">kenthoct@gmail.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Phone</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">+63 963-343-1366</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="social d-flex justify-content-center">
+                    <a class="mx-2" href="https://www.facebook.com/kenth.jabanes" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">&copy; 2025 Kenth Marlowe Jabanes</div></footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
